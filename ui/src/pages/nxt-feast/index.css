@@ -1,0 +1,55 @@
+#nxt-feast {
+    text-align: center;
+}
+#nxt-feast-submit {
+    background-color: rgba(238, 165, 31, 0.74);
+    height: 25px;
+    width: 50px;
+    border-radius: 5px;
+    display: inline-block;
+    color: black;
+}
+#nxt-feast-submit:hover {
+    background-color: rgb(0, 162, 255);
+}
+#nxt-component-1 {
+    animation: blinker 3s linear infinite;
+    color: rgb(76, 224, 17);
+    font-size: 25px;
+    text-align: center;
+    margin-top: -55px;
+}
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+form  { 
+    display: inline-block;   
+}
+p     { 
+    display: table-row;  
+}
+label { 
+    display: table-cell; 
+}
+input { 
+    display: table-cell; 
+    display:flex;
+}
+/* span:hover   
+{   
+    color: green;   
+}        */
+button {
+    transition-duration: 0.4s;
+    position: relative;
+    float: right;
+  }
+button:hover {
+    background-color: #4ca3af;
+    color: white;
+  }
+button:active {
+background: rgb(81, 255, 0);
+}

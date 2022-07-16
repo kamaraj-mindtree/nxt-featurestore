@@ -1,0 +1,36 @@
+# project: optimum_owl
+# registry: data/registry.db
+# provider: local
+# online_store:
+#     path: data/online_store.db
+
+project: sample_test_fastAPI2
+provider: local
+registry:
+    # registry_store_type: feast_postgres.PostgreSQLRegistryStore
+    registry_store_type: PostgreSQLRegistryStore
+    path: feast_registry_sample_test_fastapi
+    host: 35.225.179.5
+    port: 5551
+    database: feature_store
+    db_schema: offline_store1
+    user: postgres
+    password: postgres
+online_store:
+    # type: feast_postgres.PostgreSQLOnlineStore
+    type: postgres
+    host: 35.225.179.5
+    port: 5551
+    database: feature_store
+    db_schema: offline_store1
+    user: postgres
+    password: postgres
+offline_store:
+    # type: feast_postgres.PostgreSQLOfflineStore
+    type: postgres
+    host: 35.225.179.5
+    port: 5551
+    database: feature_store
+    db_schema: offline_store1
+    user: postgres
+    password: postgres
