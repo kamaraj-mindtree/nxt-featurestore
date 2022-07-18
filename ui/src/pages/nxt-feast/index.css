@@ -41,15 +41,14 @@ input {
 {   
     color: green;   
 }        */
-button {
+/* button {
     transition-duration: 0.4s;
     position: relative;
     float: right;
-  }
+  } */
 button:hover {
-    background-color: #4ca3af;
-    color: white;
+    background-color: orange;
   }
-button:active {
+/* button:active {
 background: rgb(81, 255, 0);
-}
+} */

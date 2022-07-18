@@ -7,7 +7,7 @@ import uvicorn
 from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-
+from typing import List
 import feast
 
 def get_app(
@@ -71,12 +71,23 @@ def get_app(
     def read_registry():
         return json.loads(registry_json)
 
-    @app.get("/nxt-feature-store-apply")
-    def nxt_apply(path, entity_name, feature_view_name):
+    @app.get("/nxt/feature-store-apply")
+    def nxt_apply(parquet_path:str,entity_column:str,feature_views_name:str,feature_service_name:str):
         # print(path, entity_name, feature_view_name)
-        from feast.nxt import nxt_feature_store
-        nxt_feature_store.feast_function(path, entity_name, feature_view_name)
-        return{'message' : 'hai'}
+        from feast.nxt import nxt_fs_api
+        # nxt_feature_store.feast_function(path, entity_name, feature_view_name)
+        return nxt_fs_api.feast_function(parquet_path,entity_column,feature_views_name,feature_service_name)
+    
+    @app.post('/nxt/feature-retrieval')
+    def nxt_feature_retrieval(entity_keys:str,entity_name: str,feature_view_names: str,start_date:str,end_date:str):
+        from feast.nxt import nxt_fs_api
+        return nxt_fs_api.register_entity_df(map(int,entity_keys.split(',')),entity_name,[feature_view_names],start_date.split('T')[0],end_date.split('T')[0])
+    
+    @app.post('/nxt/feature-materialize')
+    def nxt_feature_materialize(start_date: str, end_date: str):
+        from feast.nxt import nxt_fs_api
+        return nxt_fs_api.materialize(start_date.split('T')[0],end_date.split('T')[0])
+    
 
     # For all other paths (such as paths that would otherwise be handled by react router), pass to React
     @app.api_route("/p/{path_name:path}", methods=["GET"])

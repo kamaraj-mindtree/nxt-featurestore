@@ -32,9 +32,11 @@ const SideNav = () => {
       : ""
   }`;
 
-  const nxtCustomsLabel1 = `Registry (New)`;
+  const nxtCustomsLabel1 = `SSA Source`;
   
-  const nxtCustomsLabel2 = `Materialize (New)`;
+  const nxtCustomsLabel2 = `Materialize`;
+
+  const nxtCustomsLabel3 = `Feature Retrieval`;
 
   const entitiesLabel = `Entities ${
     isSuccess && data?.objects.entities
@@ -122,6 +124,15 @@ const SideNav = () => {
             navigate(`/p/${projectName}/nxt-feast-registry`);
           },
           isSelected: useMatchSubpath("nxt-feast-registry"),
+        },
+        {
+          name: nxtCustomsLabel3,
+          id: htmlIdGenerator("nxtFeastGetHistoricalFeature")(),
+          icon: <EuiIcon type={NxtFeastIcon16} />,
+          onClick: () => {
+            navigate(`/p/${projectName}/nxt-feast-historical-feature`);
+          },
+          isSelected: useMatchSubpath("nxt-feast-historical-feature"),
         },
         {
           name: nxtCustomsLabel2,

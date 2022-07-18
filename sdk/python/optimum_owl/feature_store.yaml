@@ -4,12 +4,14 @@
 # online_store:
 #     path: data/online_store.db
 
-project: sample_test_fastAPI2
+# project: sample_test_fastAPI2
+project: NxT_FS_demo
 provider: local
 registry:
     # registry_store_type: feast_postgres.PostgreSQLRegistryStore
     registry_store_type: PostgreSQLRegistryStore
-    path: feast_registry_sample_test_fastapi
+    # path: feast_registry_sample_test_fastapi
+    path: feast_registry_UI
     host: 35.225.179.5
     port: 5551
     database: feature_store

@@ -22,7 +22,7 @@ import DataSourceInstance from "./pages/data-sources/DataSourceInstance";
 import RootProjectSelectionPage from "./pages/RootProjectSelectionPage";
 import DatasetInstance from "./pages/saved-data-sets/DatasetInstance";
 import NoProjectGuard from "./components/NoProjectGuard";
-import {NxtRegistryIndex,NxtMaterializeIndex} from "./pages/nxt-feast";
+import {NxtRegistryIndex,NxtMaterializeIndex, NxtHistoricalFeaturesIndex} from "./pages/nxt-feast";
 
 import TabsRegistryContext, {
   FeastTabsRegistryInterface,
@@ -114,6 +114,11 @@ const FeastUISansProviders = ({
                       element={<DatasetInstance />}
                     />
                     <Route path="nxt-feast-registry/" element={<NxtRegistryIndex />} />
+                    <Route
+                      path="nxt-feast/:featureStoreName/*"
+                      element={<EntityInstance />}
+                    />
+                    <Route path="nxt-feast-historical-feature/" element={<NxtHistoricalFeaturesIndex />} />
                     <Route
                       path="nxt-feast/:featureStoreName/*"
                       element={<EntityInstance />}
